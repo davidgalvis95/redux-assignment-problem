@@ -9,7 +9,7 @@ const personReducer = (state = initialState, action) => {
         case actions.ADD_PERSON:
             return {
                 ...state,
-                persons: state.persons.concat({person: action.payload})
+                persons: state.persons.concat({...action.payload})
             };
         case actions.DELETE_PERSON:
             const updatedPersonsArray = state.persons.filter(person => person.id !== action.id)
@@ -18,6 +18,8 @@ const personReducer = (state = initialState, action) => {
                 persons: updatedPersonsArray
             };
     }
+    //we need to return the state
+    return state;
 }
 
 export default personReducer;

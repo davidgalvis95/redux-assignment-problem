@@ -6,9 +6,6 @@ import AddPerson from '../components/AddPerson/AddPerson';
 import * as actions from '../components/Actions/actions'
 
 class Persons extends Component {
-    state = {
-        persons: []
-    }
 
     personAddedHandler = () => {
         return {
@@ -22,13 +19,14 @@ class Persons extends Component {
         return (
             <div>
                 <AddPerson personAdded={() => this.props.onAddPerson(this.personAddedHandler())} />
-                {this.props.persons.map(person => (
-                    <Person 
+                {this.props.persons.map(person => {
+                    console.log(person)
+                    return (<Person
                         key={person.id}
-                        name={person.name} 
-                        age={person.age} 
-                        clicked={() => this.props.onDeletePerson(person.id)}/>
-                ))}
+                        name={person.name}
+                        age={person.age}
+                        clicked={() => this.props.onDeletePerson(person.id)}/>);
+                })}
             </div>
         );
     }

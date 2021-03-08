@@ -2,11 +2,11 @@ import React from 'react';
 
 import './Person.css';
 
-const person = (props) => (
-    <div className="Person" onClick={props.clicked}>
+const person = (props) => {
+    return  (<div className="Person" onClick={props.clicked}>
         <h1>{props.name}</h1>
         <p>Age: {props.age}</p>
-    </div>
-);
+    </div>)
+};
 
 export default person;
