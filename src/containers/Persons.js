@@ -7,18 +7,18 @@ import * as actions from '../components/Actions/actions'
 
 class Persons extends Component {
 
-    personAddedHandler = () => {
+    personAddedHandler = (age, name) => {
         return {
             id: Math.random(), // not really unique but good enough here!
-            name: 'David',
-            age: Math.floor(Math.random() * 40)
+            name: name,
+            age: +age
         };
     }
 
     render () {
         return (
             <div>
-                <AddPerson personAdded={() => this.props.onAddPerson(this.personAddedHandler())} />
+                <AddPerson personAdded={(person) => this.props.onAddPerson(this.personAddedHandler(person.age, person.name))} />
                 {this.props.persons.map(person => {
                     console.log(person)
                     return (<Person
